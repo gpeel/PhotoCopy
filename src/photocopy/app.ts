@@ -1,6 +1,16 @@
-import {Read} from './tools/read';
 // import * as fs from 'fs';
-console.log('app');
-const testFolder = './test/source';
+import {Folder} from './tools/folder';
 
-Read.readFolder(testFolder);
+console.log('app');
+const folderSource = './test/source/';
+const folderTarget = './test/target/';
+//
+// Folder.readFolder(folderSource);
+//
+// const fileSource = folderSource + 's1.txt';
+// const fileTarget = folderTarget + 's1.txt';
+//
+// const logErr = (err) => console.log(err);
+// Folder.copyFile(fileSource, fileTarget, logErr);
+
+Folder.copyFolder(folderSource, folderTarget, console.log);
