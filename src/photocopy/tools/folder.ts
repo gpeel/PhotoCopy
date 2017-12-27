@@ -3,8 +3,9 @@ import * as fs from 'fs';
 import {File} from './file';
 
 export class Folder {
-    static readFolder(folder: string): string[] {
-        console.log('Read.readFolder: ' + folder);
+
+    static readFolderFileNames(folder: string): string[] {
+        console.log('Read.readFolderFileNames: ' + folder);
         const files: string[] = [];
         fs.readdirSync(folder).forEach(file => {
             console.log(file);
@@ -13,10 +14,26 @@ export class Folder {
         return files;
     }
 
-    static copyFolder(source, target, cb: (err: any) => void) {
-
-        const files = Folder.readFolder(source);
+    static copyFolderFiles(source, target, cb: (err: any) => void) {
+        this.createFolderIfNotExist(target);
+        const files = Folder.readFolderFileNames(source);
         files.forEach(file => File.copyFile(source + file, target + file, console.log));
+    }
 
+    static copyFolderFilesList(fileNameList, source, target, cb: (err: any) => void) {
+        this.createFolderIfNotExist(target);
+        fileNameList.forEach(file => File.copyFile(source + file, target + file, console.log));
+    }
+
+    /**
+     * a folder can only be created a FULL path like : C:/me/js/Typescript/tp/PhotoCopy/test
+     * AND only tha LAST node (ie here ./test) could be created
+     * @param folder
+     */
+    static createFolderIfNotExist(folder) {
+
+        if (!fs.existsSync(folder)) {
+            fs.mkdirSync(folder);
+        }
     }
 }

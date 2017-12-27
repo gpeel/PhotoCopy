@@ -1,1 +1,0 @@
-content of s2 in s1.txt
