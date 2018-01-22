@@ -22,7 +22,11 @@ export class Folder {
 
     static copyFolderFilesList(fileNameList, source, target, cb: (err: any) => void) {
         this.createFolderIfNotExist(target);
-        fileNameList.forEach(file => File.copyFile(source + file, target + file, console.log));
+        let timer = 0;
+        fileNameList.forEach(file => {
+            timer += 500;
+            setTimeout(() => File.copyFile(source + file, target + file, console.log), timer);
+        });
     }
 
     /**
