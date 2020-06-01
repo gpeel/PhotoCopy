@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "apprun": "node dist/photocopy/app",
     "wp": "webpack --display-modules  --display-error-details",
     "start": "node ./dist/index"
   },

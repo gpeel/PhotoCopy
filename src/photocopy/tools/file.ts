@@ -36,7 +36,7 @@ export class File {
         rd.pipe(wr);
 
         function close(msg) {
-            console.log('CLOSE');
+            // console.log('CLOSE');
             if (!cbCalled) {
                 if (msg) {
                     cb(msg);
@@ -46,7 +46,7 @@ export class File {
         }
 
         function done(err) {
-            console.log('DONE');
+            // console.log('DONE');
             if (!cbCalled) {
                 cb(err);
                 cbCalled = true;
